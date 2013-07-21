@@ -1,0 +1,13 @@
+<h2> New User </h2>
+
+<form action="<%= users_url %>" method="post">
+
+  Name: <input type="text" name="user[name]">
+  <br>
+  <% @teams.each_with_index do |team, i| %>
+    <input type="checkbox" name="user[team_memberships_attributes][<%= i %>][team_id]" value="<%= team.id %>"><%= team.name %>
+    <br>
+  <% end %>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="submit" value="Create new User">
+</form>

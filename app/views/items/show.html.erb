@@ -1,0 +1,10 @@
+<h2> Item <%= @item.title %> </h2>
+
+Item Title: <%= @item.title %>
+Item Description <%= @item.description %>
+Item Completed: <%= @item.completed? ? "YES" : "NO" %>
+
+<br>
+<br>
+
+<%= link_to "Project", project_url(Project.find(@item.project_id)) %>

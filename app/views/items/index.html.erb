@@ -1,0 +1,10 @@
+<h2> Items for <%= @project.title %> </h2>
+
+<% @project.items.each do |item| %>
+  Title: <%= item.title %>
+  <br>
+  Desc: <%= item.description %>
+  <br>
+  Completed: <%= item.completed? ? "YES" : "NO" %>
+  <br>
+<% end %>

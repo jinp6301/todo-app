@@ -1,0 +1,24 @@
+<h2> Project: <%= @project.title %> </h2>
+
+Title : <%= @project.title %>
+<br>
+Description : <%= @project.description %>
+
+<br>
+
+Items : 
+<% @project.items.each do |item| %>
+  <form action="<%= batch_update_items_url %>" method="post">
+  <%= link_to item.title, item_url(item) %>
+  <input type="hidden" name="items[<%= item.id %>][completed]" value="false">
+  Completed: <input name="items[<%= item.id %>][completed]" type="checkbox" value="true" <%= "checked" if item.completed? %>/>
+  <br>
+<% end %>
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<input type="submit" value="Update">
+
+<br>
+<br>
+
+Return to Team page: <br>
+<%= link_to Team.find(@project.team_id).name, team_url(@project.team_id) %>

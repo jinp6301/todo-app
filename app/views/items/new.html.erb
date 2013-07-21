@@ -1,0 +1,16 @@
+  <h2> New Item </h2>
+
+<form action=<%= items_url %> method="post">
+
+  Title: <input type="text" name="item[title]">
+  Description: <input type="text" name="item[description]">
+  Project: 
+  <select name="item[project_id]">
+    <% @projects.each do |project| %>
+    <option value="<%= project.id  %>"><%= project.title %></option>
+    <% end %>
+  </select>
+  <input type="hidden" name="item[completed]" value="false"> 
+  <input type="hidden" name="form_authenticity" value="<%= form_authenticity_token %>">
+  <input type="submit" value="Create New Item">
+</form>
